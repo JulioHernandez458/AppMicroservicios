@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  eureka-server:
+    image: eureka #nombre de la imagen que hemos creado
+    restart: always
+    container_name: eureka
+    ports:
+      - '7000:7000'
+    networks:
+      - 'microservicios-network'
+  gateway-service:
+    image: gateway #nombre de la imagen que hemos creado
+    restart: always
+    container_name: gateway
+    ports:
+      - '7001:7001'
+    networks:
+      - 'microservicios-network'
+  empleado-microservice:
+    image: empleado-microservice #nombre de la imagen que hemos creado
+    restart: always
+    container_name: empleado-microservice
+    networks:
+      - 'microservicios-network'
+  cliente-microservice:
+    image: cliente-microservice #nombre de la imagen que hemos creado
+    restart: always
+    container_name: cliente-microservice
+    networks:
+      - 'microservicios-network'
+networks:
+  microservicios-network: #necesitamos crear en una red para alojar los servicios en ella y que puedan comunicarse entre sí
