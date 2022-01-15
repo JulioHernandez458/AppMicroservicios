@@ -1,0 +1,26 @@
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: empleados
+          uri: lb://empleados-service:7002
+          predicates:
+            - Path=/empleados/**
+        - id: clientes
+          uri: lb://clientes-service:7003
+          predicates:
+            - Path=/clientes/**
+ 
+#Tomcat Embedded Server Configuration
+server:
+  port: 7001
+  
+  
+#Eureka Configuration Properties
+eureka: 
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7000/eureka

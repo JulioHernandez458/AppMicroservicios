@@ -1,0 +1,22 @@
+
+spring:
+  application:
+    name: empleados-service
+  data:
+    mongodb:
+      #URI proporcionado por mongodb atlas para conectarse a la BDD  
+      uri: 
+      #Nombre de la BDD
+      database: 
+      
+server:
+  port: 7002
+  
+#Eureka Configuration Properties
+eureka: 
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7000/eureka
+      
+      
+  
