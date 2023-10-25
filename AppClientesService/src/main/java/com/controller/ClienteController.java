@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +31,7 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/clientes/{id}")
-	public ResponseEntity<?> getClienteById(@PathVariable String id){
+	public ResponseEntity<?> getClienteById(@PathVariable int id){
 		Optional<Cliente> cliente = service.obtenerClienteId(id);
 		if(cliente.isPresent()) {
 			return new ResponseEntity<Object>(cliente,null,HttpStatus.OK);
@@ -49,7 +51,7 @@ public class ClienteController {
 	}
 	
 	@PutMapping("/clientes/{id}")
-	public ResponseEntity<?> updateClientes(@PathVariable String id, @RequestBody Cliente cliente){
+	public ResponseEntity<?> updateClientes(@PathVariable Integer id, @RequestBody Cliente cliente){
 		Optional<Cliente> clienteOld = service.obtenerClienteId(id);
 		if(clienteOld.isPresent()) {
 			service.actualizarCliente(id, cliente);
@@ -60,7 +62,7 @@ public class ClienteController {
 	}
 	
 	@DeleteMapping("/clientes/{id}")
-	public ResponseEntity<?> deleteClientes(@PathVariable String id){
+	public ResponseEntity<?> deleteClientes(@PathVariable int id){
 		Optional<Cliente> clienteOld = service.obtenerClienteId(id);
 		if(clienteOld.isPresent()) {
 			service.eliminarCliente(id);

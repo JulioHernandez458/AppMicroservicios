@@ -1,16 +1,17 @@
 package com.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.*;
 
 import lombok.*;
 
 @ToString @EqualsAndHashCode
-@Document("cliente")
+@Entity
+@Table(name = "cliente")
 public class Cliente {
 	
-	@Id 
-	private String id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String nombre;
 	private String apellido;
 	private String email;
@@ -28,11 +29,11 @@ public class Cliente {
 		super();
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

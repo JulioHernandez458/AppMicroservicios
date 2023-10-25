@@ -6,21 +6,21 @@ spring:
     gateway:
       routes:
         - id: empleados
-          uri: lb://empleados-service:7002
+          uri: lb://empleados-service:7102
           predicates:
             - Path=/empleados/**
         - id: clientes
-          uri: lb://clientes-service:7003
+          uri: lb://clientes-service:7103
           predicates:
             - Path=/clientes/**
  
 #Tomcat Embedded Server Configuration
 server:
-  port: 7001
+  port: 7101
   
   
 #Eureka Configuration Properties
 eureka: 
   client:
     serviceUrl:
-      defaultZone: http://localhost:7000/eureka
+      defaultZone: http://localhost:7100/eureka

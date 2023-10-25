@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.model.Cliente;
@@ -22,7 +23,7 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	public Optional<Cliente> obtenerClienteId(String id) {
+	public Optional<Cliente> obtenerClienteId(int id) {
 		Optional<Cliente> cliente = repo.findById(id);
 		return cliente;
 		
@@ -34,13 +35,13 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	public void actualizarCliente(String id, Cliente cliente) {
+	public void actualizarCliente(int id, Cliente cliente) {
 		cliente.setId(id);
 		repo.save(cliente);
 	}
 
 	@Override
-	public void eliminarCliente(String id) {
+	public void eliminarCliente(int id) {
 		Cliente cliente = new Cliente();
 		cliente.setId(id);
 		repo.delete(cliente);

@@ -4,7 +4,7 @@ spring:
  
 #Tomcat Embedded Server Configuration
 server: 
-  port: 7000
+  port: 7100
  
 #Eureka Configuration Properties
 eureka:
@@ -12,4 +12,4 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     service-url:
-      defaultZone: http://localhost:7000/eureka
+      defaultZone: http://localhost:7100/eureka

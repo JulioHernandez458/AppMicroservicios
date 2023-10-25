@@ -2,21 +2,25 @@
 spring:
   application:
     name: clientes-service
-  data:
-    mongodb:
-      #URI proporcionado por mongodb atlas para conectarse a la BDD  
-      uri: 
-      #Nombre de la BDD
-      database: 
-      
+   
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/<database>
+    username: 
+    password: 
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true  
+    
 server:
-  port: 7003
+  port: 7103
   
 #Eureka Configuration Properties
 eureka: 
   client:
     serviceUrl:
-      defaultZone: http://localhost:7000/eureka
+      defaultZone: http://localhost:7100/eureka
       
       
   
